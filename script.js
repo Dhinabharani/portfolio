@@ -1,7 +1,5 @@
 
-    /* =================================================
-   PAGE LOADER
-================================================= */
+// page loader
 
 window.addEventListener("load", () => {
 
@@ -18,9 +16,7 @@ window.addEventListener("load", () => {
 });
 
 
-/* =================================================
-   CURSOR GLOW
-================================================= */
+// cursor glow
 
 const cursorGlow =
     document.querySelector(".cursor-glow");
@@ -84,9 +80,6 @@ function animateCursor() {
 animateCursor();
 
 
-/* =================================================
-   CURSOR GROW ON INTERACTIVE ELEMENTS
-================================================= */
 
 const interactiveElements =
     document.querySelectorAll(
@@ -132,9 +125,7 @@ interactiveElements.forEach(
 );
 
 
-/* =================================================
-   SCROLL PROGRESS
-================================================= */
+// scroll
 
 const progress =
     document.querySelector(
@@ -173,10 +164,6 @@ window.addEventListener(
     }
 );
 
-
-/* =================================================
-   MAGNETIC BUTTONS
-================================================= */
 
 document
     .querySelectorAll(".magnetic")
@@ -228,9 +215,7 @@ document
     });
 
 
-/* =================================================
-   SCROLL REVEAL
-================================================= */
+
 
 const revealElements =
     document.querySelectorAll(
@@ -287,9 +272,7 @@ revealElements.forEach(
 );
 
 
-/* =================================================
-   PORTRAIT PARALLAX
-================================================= */
+
 
 const portrait =
     document.querySelector(
@@ -334,9 +317,7 @@ window.addEventListener(
 );
 
 
-/* =================================================
-   PROJECT CARD TILT
-================================================= */
+// card
 
 document
     .querySelectorAll(
@@ -405,10 +386,7 @@ document
         );
 
     });
-
-    /* =================================================
-   SMOOTH SECTION PARALLAX
-================================================= */
+// section
 
 const orbs =
     document.querySelectorAll(
@@ -444,9 +422,6 @@ window.addEventListener(
 );
 
 
-/* =================================================
-   SKILL BUTTON RANDOM FLOAT
-================================================= */
 
 const skills =
     document.querySelectorAll(
@@ -464,9 +439,6 @@ skills.forEach(
 );
 
 
-/* =================================================
-   ACTIVE NAVIGATION
-================================================= */
 
 const sections =
     document.querySelectorAll(
@@ -531,10 +503,6 @@ window.addEventListener(
 );
 
 
-/* =================================================
-   AUDIO REACTIVE ENGINE
-   Microphone Input
-================================================= */
 
 const audioBtn =
     document.getElementById(
@@ -564,9 +532,6 @@ let freqData = null;
 let audioActive = false;
 
 
-/* =================================================
-   SMOOTH AUDIO VALUES
-================================================= */
 
 const audio = {
 
@@ -579,11 +544,6 @@ const audio = {
 
 };
 
-
-/* =================================================
-   BEAT DETECTION
-================================================= */
-
 const bassHistory = [];
 
 const BASS_HISTORY_LEN = 43;
@@ -591,9 +551,6 @@ const BASS_HISTORY_LEN = 43;
 let bassAvg = 0;
 
 
-/* =================================================
-   ENABLE MICROPHONE AUDIO
-================================================= */
 
 async function enableAudio() {
 
@@ -655,9 +612,7 @@ async function enableAudio() {
             8000;
 
 
-        /* -------------------------
-           ANALYSER
-        ------------------------- */
+     
 
         analyser =
             audioCtx.createAnalyser();
@@ -742,9 +697,6 @@ async function enableAudio() {
 }
 
 
-/* =================================================
-   DISABLE AUDIO
-================================================= */
 
 function disableAudio() {
 
@@ -795,9 +747,6 @@ function disableAudio() {
 }
 
 
-/* =================================================
-   AUDIO BUTTON
-================================================= */
 
 if (audioBtn) {
 
@@ -823,9 +772,7 @@ if (audioBtn) {
 }
 
 
-/* =================================================
-   SAMPLE + SMOOTH AUDIO
-================================================= */
+
 
 function sampleAudio() {
 
@@ -916,9 +863,7 @@ function sampleAudio() {
         ) / 255;
 
 
-    /* -------------------------
-       SMOOTHING
-    ------------------------- */
+
 
     audio.bass =
         audio.bass * .7 +
@@ -941,9 +886,6 @@ function sampleAudio() {
         audio.treble * .15;
 
 
-    /* =================================================
-       BEAT DETECTION
-    ================================================= */
 
     bassHistory.push(
         audio.bass
@@ -1005,9 +947,7 @@ function sampleAudio() {
     audio.beat *= .9;
 
 
-    /* =================================================
-       AUDIO BARS
-    ================================================= */
+
 
     for (
         let i = 0;
@@ -1030,10 +970,6 @@ function sampleAudio() {
     }
 
 
-    /* =================================================
-       SCREEN FLASH
-    ================================================= */
-
     if (audioFlash) {
 
         audioFlash.style.opacity =
@@ -1047,9 +983,6 @@ function sampleAudio() {
 }
 
 
-/* =================================================
-   BEAT EVENT
-================================================= */
 
 function onBeat() {
 
@@ -1102,9 +1035,6 @@ function onBeat() {
 }
 
 
-/* =================================================
-   APPLY AUDIO TO VISUALS
-================================================= */
 
 const redLightEls =
     document.querySelectorAll(
@@ -1143,9 +1073,7 @@ function applyAudioToVisuals() {
         audio.level;
 
 
-    /* -------------------------
-       AMBIENT ORBS
-    ------------------------- */
+
 
     redLightEls.forEach(
         orb => {
@@ -1165,9 +1093,6 @@ function applyAudioToVisuals() {
     );
 
 
-    /* -------------------------
-       PORTRAIT BREATHING
-    ------------------------- */
 
     if (portraitImg) {
 
@@ -1185,9 +1110,6 @@ function applyAudioToVisuals() {
     }
 
 
-    /* -------------------------
-       PORTRAIT RINGS
-    ------------------------- */
 
     portraitRings.forEach(
         ring => {
@@ -1215,9 +1137,6 @@ function applyAudioToVisuals() {
     );
 
 
-    /* -------------------------
-       CURSOR GLOW
-    ------------------------- */
 
     if (cursorGlowEl) {
 
@@ -1232,10 +1151,6 @@ function applyAudioToVisuals() {
 }
 
 
-/* =================================================
-   AUDIO ANIMATION LOOP
-================================================= */
-
 (function audioLoop() {
 
     sampleAudio();
@@ -1248,9 +1163,7 @@ function applyAudioToVisuals() {
 
 })();
 
-/* =================================================
-   PORTRAIT PARALLAX + MOUSE TRAIL + CLICK RIPPLE
-================================================= */
+
 
 const portraitEl =
     document.querySelector(
@@ -1258,9 +1171,7 @@ const portraitEl =
     );
 
 
-/* =================================================
-   MOUSE TRAIL
-================================================= */
+
 
 const TRAIL_MAX = 18;
 
@@ -1314,18 +1225,12 @@ let trailPointer = 0;
 let lastTrailSpawn = 0;
 
 
-/* =================================================
-   MOUSE MOVE
-================================================= */
 
 window.addEventListener(
     "mousemove",
     (event) => {
 
 
-        /* -------------------------
-           PORTRAIT PARALLAX
-        ------------------------- */
 
         if (portraitEl) {
 
@@ -1405,10 +1310,6 @@ window.addEventListener(
 );
 
 
-/* =================================================
-   TRAIL ANIMATION
-================================================= */
-
 function animateTrail() {
 
     for (
@@ -1478,18 +1379,13 @@ animateTrail();
 
 
 
-/* =================================================
-   CLICK RIPPLE
-================================================= */
 
 window.addEventListener(
     "click",
     (event) => {
 
 
-        /* -------------------------
-           Skip buttons / links
-        ------------------------- */
+
 
         if (
             event.target.closest(
@@ -1535,11 +1431,7 @@ window.addEventListener(
 
 
 
-/* =================================================
-   PREMIUM MOUSE SYSTEM
-   Cursor + Hover + Click +
-   Double Click + Audio
-================================================= */
+
 
 const cursorDot =
     document.querySelector(
@@ -1569,9 +1461,6 @@ let premiumRingY =
     premiumMouseY;
 
 
-/* =================================================
-   PREMIUM CURSOR POSITION
-================================================= */
 
 window.addEventListener(
     "mousemove",
@@ -1588,9 +1477,7 @@ window.addEventListener(
 );
 
 
-/* =================================================
-   SMOOTH CURSOR
-================================================= */
+
 
 function animatePremiumCursor() {
 
@@ -1643,18 +1530,13 @@ animatePremiumCursor();
 
 
 
-/* =================================================
-   MOUSE AUDIO
-================================================= */
+//  mouse audio
 
 let mouseAudio = null;
 
 let soundEnabled = true;
 
-
-/* =================================================
-   CREATE AUDIO CONTEXT
-================================================= */
+// clik autio
 
 function createMouseAudio() {
 
@@ -1689,12 +1571,6 @@ function createMouseAudio() {
     return true;
 
 }
-
-
-
-/* =================================================
-   TONE GENERATOR
-================================================= */
 
 function tone(
     frequency,
@@ -1790,10 +1666,6 @@ function tone(
 
 
 
-/* =================================================
-   HOVER SOUND
-================================================= */
-
 function hoverSound() {
 
     tone(
@@ -1809,10 +1681,6 @@ function hoverSound() {
 
 
 
-/* =================================================
-   CLICK SOUND
-================================================= */
-
 function clickSound() {
 
     tone(
@@ -1825,12 +1693,6 @@ function clickSound() {
     );
 
 }
-
-
-
-/* =================================================
-   DOUBLE CLICK SOUND
-================================================= */
 
 function doubleClickSound() {
 
@@ -1856,10 +1718,6 @@ function doubleClickSound() {
 }
 
 
-
-/* =================================================
-   PREMIUM HOVER ELEMENTS
-================================================= */
 
 const premiumHoverElements =
     document.querySelectorAll(
@@ -1912,10 +1770,6 @@ premiumHoverElements.forEach(
 
 
 
-/* =================================================
-   NORMAL CLICK
-================================================= */
-
 window.addEventListener(
     "click",
     (event) => {
@@ -1955,9 +1809,6 @@ window.addEventListener(
 
 
 
-/* =================================================
-   DOUBLE CLICK
-================================================= */
 
 window.addEventListener(
     "dblclick",
@@ -1976,10 +1827,6 @@ window.addEventListener(
 );
 
 
-
-/* =================================================
-   DOUBLE CLICK PULSE
-================================================= */
 
 function createDoublePulse(
     x,
@@ -2017,10 +1864,6 @@ function createDoublePulse(
 }
 
 
-
-/* =================================================
-   CLICK SPARK
-================================================= */
 
 function createClickSpark(
     x,
@@ -2096,10 +1939,7 @@ function createClickSpark(
 
 
 
-/* =================================================
-   KEYBOARD SHORTCUT
-   M = Toggle Mouse Sound
-================================================= */
+
 
 window.addEventListener(
     "keydown",
@@ -2119,6 +1959,4 @@ window.addEventListener(
 );
 
 
-/* =================================================
-   END OF PREMIUM MOUSE SYSTEM
-================================================= */
+
